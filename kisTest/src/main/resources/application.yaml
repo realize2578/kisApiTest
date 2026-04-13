@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: kisTest
+
+  datasource:
+    # 💡 mem(메모리)에서 file(파일)로 변경. 프로젝트 최상단에 DB 파일이 생성됩니다.
+    url: jdbc:h2:file:./kis_local_db;AUTO_SERVER=TRUE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: true
+      path: /h2-console # 접속 경로 (기본값이 /h2-console 이므로 생략 가능합니다)
+
+  jpa:
+    hibernate:
+      ddl-auto: update # 💡 서버 시작 시 Entity를 스캔하여 자동으로 테이블을 생성해 줍니다.
+    show-sql: true
+
+  profiles:
+    include: secret # application-secret.yml 파일을 함께 로드합니다.
